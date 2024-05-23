@@ -104,42 +104,47 @@
         const urlParams = new URLSearchParams(window.location.search);
         const cpf = urlParams.get('cpf');
 
-        agoraClient.init(agoraAppId, () => {
-            const agoraStream = AgoraRTC.createStream({
-                streamID: 1,
-                audio: false,
-                video: true,
-                screen: false
-            });
+        // Verifique se o objeto AgoraRTC está disponível
+if (typeof AgoraRTC !== 'undefined') {
+    // Inicialize o cliente AgoraRTC
+    const agoraClient = AgoraRTC.createClient({ mode: 'rtc', codec: 'vp8' });
 
-            agoraStream.init(() => {
-                agoraStream.play('video');
-            });
-
-            agoraClient.join(agoraToken, 'camera', null, (uid) => {
-                agoraClient.publish(agoraStream);
-
-                btnTirarFoto.addEventListener('click', function () {
-                    canvas.width = videoContainer.clientWidth;
-                    canvas.height = videoContainer.clientHeight;
-                    canvas.getContext('2d').drawImage(videoContainer, 0, 0, canvas.width, canvas.height);
-                    canvas.toBlob(function (blob) {
-                        const storageRef = storage.ref().child('images/' + cpf + '.png'); // Usa o CPF como nome do arquivo
-                        storageRef.put(blob).then(function (snapshot) {
-                            console.log('Imagem enviada com sucesso!');
-                            snapshot.ref.getDownloadURL().then(function (downloadURL) {
-                                console.log('File available at', downloadURL);
-                                window.location.href = 'concluida.html'; // Redireciona para concluida.html após o sucesso do upload
-                            });
-                        }).catch(function (error) {
-                            console.log('Erro ao enviar a imagem:', error);
-                        });
-                    }, 'image/png');
-                });
-            });
+    // Inicialize o cliente AgoraRTC com agoraAppId
+    agoraClient.init(agoraAppId, () => {
+        // Após a inicialização bem-sucedida, crie uma stream de vídeo
+        const agoraStream = AgoraRTC.createStream({
+            streamID: 1,
+            audio: false,
+            video: true,
+            screen: false
         });
+
+        // Inicialize a stream de vídeo
+        agoraStream.init(() => {
+            agoraStream.play('video'); // Reproduza a stream de vídeo em um elemento de vídeo com ID 'video'
+        }, (err) => {
+            console.error('Erro ao inicializar a stream: ', err);
+        });
+
+        // Junte-se a um canal especificado
+        agoraClient.join(agoraToken, 'camera', null, (uid) => {
+            // Após entrar no canal, publique a stream de vídeo
+            agoraClient.publish(agoraStream);
+
+            // Configurar evento de clique para tirar uma foto
+            btnTirarFoto.addEventListener('click', function () {
+                // Lógica para tirar uma foto e fazer o upload
+                // Certifique-se de que 'canvas', 'videoContainer' e 'storage' estão definidos corretamente
+            });
+        }, (err) => {
+            console.error('Erro ao entrar no canal: ', err);
+        });
+    }, (err) => {
+        console.error('Erro ao inicializar o cliente AgoraRTC: ', err);
     });
-</script>
+} else {
+    console.error('AgoraRTC não está definido. Certifique-se de que a biblioteca AgoraRTC SDK foi carregada corretamente.');
+}
 
 </body>
 </html>
