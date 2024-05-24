@@ -4,58 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Câmera Frontal</title>
-    <style type="text/css">
-        body {
-    font-family: sans-serif;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #f0f0f0;
+  <style type="text/css">
+  /* Estilos Gerais */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f8f9fa; /* Cinza claro */
 }
 
 .container {
-    text-align: center;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza os itens horizontalmente */
+  overflow-y: hidden; /* Impede a rolagem vertical */
 }
 
+
 h1 {
-    margin-bottom: 20px;
+  margin-bottom: 30px;
+  font-size: 28px;
+  text-align: center;
+  color: #333; /* Cor do texto mais escura */
 }
 
 .camera {
-    position: relative;
-    width: 320px;
-    height: 240px;
-    border: 1px solid #ccc;
-    overflow: hidden;
+  position: relative;
+  width: 250px; /* Aumenta um pouco o tamanho */
+  height: 250px; /* Aumenta um pouco o tamanho */
+  border: 2px solid #007bff; /* Borda azul mais destacada */
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0; /* Fundo cinza claro */
 }
 
 #video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%; /* Garante que o vídeo preenche o círculo */
 }
 
 #btn-tirar-foto {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  margin-top: auto; /* Alinha o botão para a parte inferior do container */
+  margin-bottom: 30px; /* Adiciona um espaço entre o botão e a câmera */
+  padding: 12px 24px; /* Aumenta o preenchimento */
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Suaviza a transição */
 }
 
-    </style>
+#btn-tirar-foto:hover {
+  background-color: #0056b3; /* Cor mais escura ao passar o mouse */
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+  .container {
+    width: 90%; /* Reduz a largura do container em telas menores */
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .camera {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+</style>
+
 </head>
 <body>
+
+    
 
     <!-- Intancia para conectar com o firebase-->
 
@@ -154,10 +195,12 @@ h1 {
 
 
     <div class="container">
-        <h1>Câmera Frontal</h1>
+        <h2 class="prepare-foto">Prepare-se para a foto</h2>
         <div class="camera">
             <video id="video" autoplay></video>
         </div>
+        <h1>Mantenha o rosto alinhado</h1>
+
         <button id="btn-tirar-foto">Tirar Foto</button>
     </div>
 </body>
