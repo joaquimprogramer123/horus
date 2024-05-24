@@ -25,70 +25,34 @@ body {
 }
 
 .container {
-  width: 100vw; /* Cobrir a largura total da viewport */
-  height: 100vh; /* Cobrir a altura total da viewport */
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 100vw;
+  height: 100vh;
+  background-color: #f8f9fa;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow-y: hidden;
-  margin: 0; /* Remover margens */
+  justify-content: center;
 }
 
 h1 {
-  margin: 0; /* Remover margem para o título */
-  font-size: 28px;
-  text-align: center;
-  color: #333;
+  font-size: 24px;
+  margin: 20px 0; /* Adicione espaço entre o título e os outros elementos */
 }
-
 
 .camera {
-  position: relative;
-  width: 153px; /* Ajuste a largura conforme necessário */
-  height: 200px; /* Ajuste a altura conforme necessário */
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #fff; /* Fundo cinza claro */
-  margin: 20px; /* Adiciona uma margem de 20px ao redor do elemento */
+  width: 160%; /* Ajuste a largura conforme necessário */
+  max-width: 200px; /* Define uma largura máxima */
+  height: auto; /* Altura automática para manter a proporção */
+  margin: 20px 0; /* Adicione espaço ao redor da câmera */
+  border-radius: 50%; /* Torna a câmera redonda */
+  overflow: hidden; /* Garante que a câmera ajuste-se dentro do contêiner */
 }
-
-.margin {
-  width: calc(100% + 40px); /* Calcula a largura da margem incluindo as margens esquerda e direita */
-  height: calc(100% + 40px); /* Calcula a altura da margem incluindo as margens superior e inferior */
-  margin: -20px; /* Ajusta a margem para compensar a margem do elemento .camera */
-  background-color: blue; /* Define a cor da margem como azul */
-}
-
-
-#video {
-  width: 153px; /* Largura fixa em pixels */
-  height: 200px; /* Altura fixa em pixels */
-  object-fit: cover;
-  border-radius: 50%; /* Garante que o vídeo preenche o círculo */
-}
-
 
 #btn-tirar-foto {
-  margin-top: auto; /* Alinha o botão para a parte inferior do container */
-  margin-bottom: 30px; /* Adiciona um espaço entre o botão e a câmera */
-  padding: 12px 24px; /* Aumenta o preenchimento */
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease; /* Suaviza a transição */
+  margin: 20px 0; /* Adicione espaço entre o botão e a câmera */
+  padding: 12px 24px;
 }
 
-#btn-tirar-foto:hover {
-  background-color: #0056b3; /* Cor mais escura ao passar o mouse */
-}
 
 /* Media Queries para Responsividade */
 @media (max-width: 768px) {
