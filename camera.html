@@ -46,24 +46,31 @@ h1 {
 
 .camera {
   position: relative;
-  width: 350px; /* Aumenta um pouco o tamanho */
-  height: 350px; /* Aumenta um pouco o tamanho */
-  border: 2px solid #007bff; /* Borda azul mais destacada */
-  border-radius: 50%;
+  width: 170px; /* Ajuste a largura conforme necessário */
+  height: 220px; /* Ajuste a altura conforme necessário */
   overflow: hidden;
-  margin-bottom: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: #f0f0f0; /* Fundo cinza claro */
+  margin: 20px; /* Adiciona uma margem de 20px ao redor do elemento */
 }
 
+.margin {
+  width: calc(100% + 40px); /* Calcula a largura da margem incluindo as margens esquerda e direita */
+  height: calc(100% + 40px); /* Calcula a altura da margem incluindo as margens superior e inferior */
+  margin: -20px; /* Ajusta a margem para compensar a margem do elemento .camera */
+  background-color: blue; /* Define a cor da margem como azul */
+}
+
+
 #video {
-  width: 100%;
-  height: 100%;
+  width: 170px; /* Largura fixa em pixels */
+  height: 220px; /* Altura fixa em pixels */
   object-fit: cover;
   border-radius: 50%; /* Garante que o vídeo preenche o círculo */
 }
+
 
 #btn-tirar-foto {
   margin-top: auto; /* Alinha o botão para a parte inferior do container */
