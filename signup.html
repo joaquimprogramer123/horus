@@ -44,18 +44,17 @@
 <!-- Intancia para iniciar o firestore-->
 
 <script type="module">
-	
 
 // TODO: Replace the following with your app's Firebase project configuration
 // See: https://support.google.com/firebase/answer/7015592
 const firebaseConfig = {
-    apiKey: "AIzaSyAdVrAXk70WCDvw6nveao9SwCAAAbIpsts",
-    authDomain: "horus-87f81.firebaseapp.com",
-    projectId: "horus-87f81",
-    storageBucket: "horus-87f81.appspot.com",
-    messagingSenderId: "692067844473",
-    appId: "1:692067844473:web:1a18ba28a30c0f48332fa8",
-    measurementId: "G-FR49ZZTE4E"
+  apiKey: "AIzaSyAdVrAXk70WCDvw6nveao9SwCAAAbIpsts",
+  authDomain: "horus-87f81.firebaseapp.com",
+  projectId: "horus-87f81",
+  storageBucket: "horus-87f81.appspot.com",
+  messagingSenderId: "692067844473",
+  appId: "1:692067844473:web:1a18ba28a30c0f48332fa8",
+  measurementId: "G-FR49ZZTE4E"
 };
 
 // Initialize Firebase
@@ -66,44 +65,48 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Referência ao formulário
-    const form = document.getElementById('LoginForm');
+  // Referência ao formulário
+  const form = document.getElementById('LoginForm');
 
-    // Referência ao botão de envio
-    const submitButton = document.getElementById('submit');
+  // Referência ao botão de envio
+  const submitButton = document.getElementById('submit');
 
-    // Verifica se o formulário e o botão de envio foram encontrados no DOM
-    if (form && submitButton) {
-        // Manipulador de evento para o clique do botão de envio
-        submitButton.addEventListener('click', function(event) {
-            event.preventDefault(); // Evita o envio padrão do formulário
+  // Verifica se o formulário e o botão de envio foram encontrados no DOM
+  if (form && submitButton) {
+    // Manipulador de evento para o clique do botão de envio
+    submitButton.addEventListener('click', function(event) {
+      event.preventDefault(); // Evita o envio padrão do formulário
 
-           // Obter os valores dos campos do formulário
-const nome = form.elements['Username'].value;
-const email = form.elements['email'].value;
-const cpf = form.elements['password'].value;
-const telefone = form.elements['telefone'].value;
-const whatsapp = form.elements['whatsapp'].value;
+      // Obter os valores dos campos do formulário
+      const nome = form.elements['Username'].value;
+      const email = form.elements['email'].value;
+      const cpf = form.elements['password'].value; // Alterado 'password' para 'cpf'
+      const telefone = form.elements['telefone'].value;
+      const whatsapp = form.elements['whatsapp'].value;
 
-// Salvar os dados no Firestore com o CPF como ID do documento
-db.collection('usuarios').doc(cpf).set({
-    nome: nome,
-    email: email,
-    cpf: cpf,
-    telefone: telefone,
-    whatsapp: whatsapp
-})
-.then(() => {
-    console.log("Documento salvo com sucesso!");
-	
-})
-.catch((error) => {
-    console.error("Erro ao salvar documento: ", error);
+      // Validação de dados (implemente a sua lógica de validação aqui)
+
+      // Salvar os dados no Firestore com o CPF como ID do documento
+      db.collection('usuarios').doc(cpf).set({
+        nome: nome,
+        email: email,
+        cpf: cpf,
+        telefone: telefone,
+        whatsapp: whatsapp
+      })
+      .then(() => {
+        console.log("Documento salvo com sucesso!");
+      })
+      .catch((error) => {
+        console.error("Erro ao salvar documento: ", error);
+      });
+
+    });
+  }
 });
 
-       
-
 </script>
+
 
 
 
