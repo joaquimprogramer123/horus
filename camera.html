@@ -39,34 +39,35 @@ h1 {
   margin: 20px 0; /* Adicione espaço entre o título e os outros elementos */
 }
 
+.container {
+  width: 100%;
+  height: 100%;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .camera {
-  width: 160%; /* Ajuste a largura conforme necessário */
-  max-width: 200px; /* Define uma largura máxima */
-  height: auto; /* Altura automática para manter a proporção */
-  margin: 20px 0; /* Adicione espaço ao redor da câmera */
-  border-radius: 50%; /* Torna a câmera redonda */
-  overflow: hidden; /* Garante que a câmera ajuste-se dentro do contêiner */
+  width: 80%; /* Ajuste conforme necessário */
+  max-width: 200px;
+  height: auto;
+  margin: 20px 0;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
-#btn-tirar-foto {
-  margin: 20px 0; /* Adicione espaço entre o botão e a câmera */
-  padding: 12px 24px;
-}
-
-
-/* Media Queries para Responsividade */
-@media (max-width: 768px) {
+@media screen and (min-width: 768px) {
   .container {
-    width: 90%; /* Reduz a largura do container em telas menores */
-  }
-
-  h1 {
-    font-size: 24px;
+    justify-content: flex-start;
+    padding-top: 20vh; /* Ajuste conforme necessário */
+    padding-bottom: 20vh; /* Ajuste conforme necessário */
   }
 
   .camera {
-    width: 200px;
-    height: 200px;
+    width: 50%; /* Ajuste conforme necessário */
+    max-width: 300px;
   }
 }
 
