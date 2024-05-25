@@ -101,8 +101,6 @@ db.collection('usuarios').doc(cpf).set({
     console.error("Erro ao salvar documento: ", error);
 });
 
-            .then(function(docRef) {
-                console.log('Dados salvos com sucesso! ID do documento:', docRef.id);
                 
                 // Redireciona para foto.html e passa o CPF como parâmetro de consulta na URL
                 window.location.href = 'foto.html?cpf=' + encodeURIComponent(cpf);
