@@ -151,7 +151,7 @@ h1 {
         // Verifica se o controle de zoom é suportado
         if (capabilities.zoom) {
             const settings = videoTrack.getSettings();
-            let zoomLevel = settings.zoom + (capabilities.zoom.max - settings.zoom) / 8; // Define o zoom para metade do caminho entre o atual e o máximo
+            let zoomLevel = settings.zoom + (capabilities.zoom.max - settings.zoom) / 3; // Define o zoom para metade do caminho entre o atual e o máximo
             videoTrack.applyConstraints({
                 advanced: [{ zoom: zoomLevel }]
             });
