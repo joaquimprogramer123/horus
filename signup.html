@@ -101,15 +101,7 @@ db.collection('usuarios').doc(cpf).set({
     console.error("Erro ao salvar documento: ", error);
 });
 
-                
-                // Redireciona para foto.html e passa o CPF como parâmetro de consulta na URL
-                window.location.href = 'foto.html?cpf=' + encodeURIComponent(cpf);
-            })
        
-    } else {
-        console.error('Formulário ou botão de envio não encontrado no DOM.');
-    }
-});
 
 </script>
 
