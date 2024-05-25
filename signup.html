@@ -96,6 +96,9 @@ document.addEventListener('DOMContentLoaded', function() {
       })
       .then(() => {
         console.log("Documento salvo com sucesso!");
+
+        // Redireciona para foto.html e passa o CPF como parâmetro de consulta na URL
+        window.location.href = 'foto.html?cpf=' + encodeURIComponent(cpf);
       })
       .catch((error) => {
         console.error("Erro ao salvar documento: ", error);
@@ -106,6 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 </script>
+
 
 
 
