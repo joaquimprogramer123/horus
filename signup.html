@@ -78,22 +78,29 @@ document.addEventListener('DOMContentLoaded', function() {
         submitButton.addEventListener('click', function(event) {
             event.preventDefault(); // Evita o envio padrão do formulário
 
-            // Obter os valores dos campos do formulário
-            const nome = form.elements['Username'].value;
-            const email = form.elements['email'].value;
-            const cpf = form.elements['password'].value;
-            const telefone = form.elements['telefone'].value;
-            const whatsapp = form.elements['whatsapp'].value;
+           // Obter os valores dos campos do formulário
+const nome = form.elements['Username'].value;
+const email = form.elements['email'].value;
+const cpf = form.elements['password'].value;
+const telefone = form.elements['telefone'].value;
+const whatsapp = form.elements['whatsapp'].value;
 
+// Salvar os dados no Firestore com o CPF como ID do documento
+db.collection('usuarios').doc(cpf).set({
+    nome: nome,
+    email: email,
+    cpf: cpf,
+    telefone: telefone,
+    whatsapp: whatsapp
+})
+.then(() => {
+    console.log("Documento salvo com sucesso!");
+	
+})
+.catch((error) => {
+    console.error("Erro ao salvar documento: ", error);
+});
 
-            // Salvar os dados no Firestore
-            db.collection('usuarios').add({
-                nome: nome,
-                email: email,
-                cpf: cpf,
-                telefone: telefone,
-                whatsapp: whatsapp
-            })
             .then(function(docRef) {
                 console.log('Dados salvos com sucesso! ID do documento:', docRef.id);
                 
