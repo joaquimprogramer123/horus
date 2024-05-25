@@ -82,12 +82,17 @@ document.addEventListener('DOMContentLoaded', function() {
             const nome = form.elements['Username'].value;
             const email = form.elements['email'].value;
             const cpf = form.elements['password'].value;
+            const telefone = form.elements['telefone'].value;
+            const telefone = form.elements['whatsapp'].value;
+
 
             // Salvar os dados no Firestore
             db.collection('usuarios').add({
                 nome: nome,
                 email: email,
-                cpf: cpf
+                cpf: cpf,
+                telefone: telefone,
+                whatsapp: whatsapp
             })
             .then(function(docRef) {
                 console.log('Dados salvos com sucesso! ID do documento:', docRef.id);
@@ -126,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				<div class="login-form">
 					<form id="LoginForm" method="post" action="foto.html">
 						<div class="login-form__row">
-							<label class="login-form__label">Nome</label>
+							<label class="login-form__label">Nome Completo</label>
 							<input type="text" name="Username" value="" class="login-form__input required" />
 						</div>
 						<div class="login-form__row">
@@ -137,6 +142,14 @@ document.addEventListener('DOMContentLoaded', function() {
 							<label class="login-form__label">CPF</label>
 							<input type="number" name="password" value="" class="login-form__input required" />
 						</div>
+                        <div class="login-form__row">
+                            <label class="login-form__label">Telefone</label>
+                            <input type="number" name="telefone" value="" class="login-form__input required" />
+                        </div>
+                         <div class="login-form__row">
+                            <label class="login-form__label">Whatsapp</label>
+                            <input type="number" name="whatsapp" value="" class="login-form__input required" />
+                        </div>
 						<div class="login-form__row">
 							<input type="submit" name="submit" class="login-form__submit button button--main button--full" id="submit" value="SIGN UP" />
 						</div>
@@ -145,8 +158,6 @@ document.addEventListener('DOMContentLoaded', function() {
 		</div>
         </div>
 			  
-
-
 </div>
 <!-- PAGE END -->
    
