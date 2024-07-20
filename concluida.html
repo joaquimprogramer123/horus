@@ -162,6 +162,42 @@ a:hover {
 
 </style>
 <body>
+
+  <!-- Inclua a biblioteca Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+
+  <script>
+    // Configuração do Firebase
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    // Inicializa o Firebase
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    document.getElementById('logout-link').addEventListener('click', function(event) {
+      event.preventDefault(); // Impede o comportamento padrão do link
+
+      auth.signOut().then(() => {
+        console.log('Usuário deslogado com sucesso');
+        // Redireciona para a página inicial
+        window.location.href = 'index.html';
+      }).catch((error) => {
+        console.error('Erro ao deslogar o usuário:', error);
+      });
+    });
+  </script>
+
+
+
+    
       <div id="splash">
         <div id="spinner"></div>
     </div>
@@ -172,7 +208,7 @@ a:hover {
         <h1>Cadastro Realizado com Sucesso!</h1>
         <p>Seus dados foram salvos em nosso sistema.</p>
         <p>Obrigado por se cadastrar!</p>
-        <a href="index.html">Voltar para Página Inicial</a>
+        <a>Voltar para Página Inicial</a>
     </div>
      <script>
         window.addEventListener('load', function() {
